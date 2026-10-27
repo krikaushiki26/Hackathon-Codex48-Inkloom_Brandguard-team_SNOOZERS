@@ -6,7 +6,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from auth import LoginRequest, RegisterRequest, login_user, register_user
-from database import SessionLocal, settings
+from database import Base, SessionLocal, engine, settings
 from models import BrandRule, User
 from security import get_current_user, require_roles
 from reviews import (
@@ -21,6 +21,11 @@ app = FastAPI(
     description="Check content against approved brand rules and manage human reviews.",
     version="1.0.0",
 )
+
+@app.on_event("startup")
+def create_database_tables():
+    Base.metadata.create_all(bind=engine)
+
 
 # --------------------------------------------------
 # CORS: Allow the frontend on Vite ports 5173-5175

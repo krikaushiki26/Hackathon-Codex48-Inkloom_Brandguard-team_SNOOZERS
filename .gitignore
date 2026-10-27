@@ -53,3 +53,8 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Vercel project linkage
+.vercel/
+.vercel
+.env*
