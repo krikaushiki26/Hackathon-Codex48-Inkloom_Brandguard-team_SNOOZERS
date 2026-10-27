@@ -170,6 +170,13 @@
   cursor: not-allowed;
 }
 
+.password-requirements {
+  margin: 8px 0 0;
+  color: #737d6f;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
 /* Submit button */
 
 .auth-submit {

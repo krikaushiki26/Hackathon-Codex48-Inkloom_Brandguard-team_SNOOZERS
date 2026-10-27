@@ -158,6 +158,9 @@ function Auth({ onLogin }) {
                   isRegister ? "new-password" : "current-password"
                 }
                 minLength={isRegister ? 8 : undefined}
+                aria-describedby={
+                  isRegister ? "password-requirements" : undefined
+                }
                 required
                 disabled={loading}
               />
@@ -177,6 +180,13 @@ function Auth({ onLogin }) {
                 {showPassword ? "Hide" : "Show"}
               </button>
             </div>
+
+            {isRegister && (
+              <p id="password-requirements" className="password-requirements">
+                Your password must be at least 8 characters long and contain
+                both letters and numbers.
+              </p>
+            )}
           </div>
 
           {error && (
